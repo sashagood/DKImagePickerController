@@ -136,8 +136,14 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
 		self.title = group.groupName
 		
 		let groupsCount = getImageManager().groupDataManager.groupIds?.count ?? 0
-		self.selectGroupButton.setTitle(group.groupName + (groupsCount > 1 ? "  \u{25be}" : "" ), for: .normal)
-		self.selectGroupButton.sizeToFit()
+		self.selectGroupButton.setTitle(group.groupName.uppercased(), for: .normal)
+        self.selectGroupButton.sizeToFit()
+        if groupsCount > 1 {
+            self.selectGroupButton.setImage(DKImageResource.triangleIcon(), for: .normal)
+            self.selectGroupButton.transform = CGAffineTransform(scaleX: -1.0, y: 1.0);
+            self.selectGroupButton.titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0);
+            self.selectGroupButton.imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0);
+        }
 		self.selectGroupButton.isEnabled = groupsCount > 1
 		
 		self.navigationItem.titleView = self.selectGroupButton

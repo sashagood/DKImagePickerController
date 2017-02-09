@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B013A6D1E4C90F500BBFE6F /* DKImagePickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9CD45E791B7C9E4600365976 /* DKImagePickerController.bundle */; };
 		9C13DF6F1C90490E001B0ED7 /* DKImagePickerControllerDefaultUIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C13DF6E1C90490E001B0ED7 /* DKImagePickerControllerDefaultUIDelegate.swift */; };
 		9C1B8EE11E1B411A00282232 /* DKAssetGroupCellItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B8EE01E1B411A00282232 /* DKAssetGroupCellItemProtocol.swift */; };
 		9C1B8EE21E1B411A00282232 /* DKAssetGroupCellItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B8EE01E1B411A00282232 /* DKAssetGroupCellItemProtocol.swift */; };
@@ -69,7 +70,6 @@
 		B9EFB98E1D20FBAA006CDCAA /* DKImageResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C456CCC1B7A223300DFD777 /* DKImageResource.swift */; };
 		B9EFB9941D2105A3006CDCAA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9EFB9931D2105A3006CDCAA /* UIKit.framework */; };
 		B9EFB9981D210A22006CDCAA /* DKCameraResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9CC361521BA7E1D100756DDB /* DKCameraResource.bundle */; };
-		B9EFB9991D210A22006CDCAA /* DKImagePickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9CD45E791B7C9E4600365976 /* DKImagePickerController.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -504,11 +504,12 @@
 				TargetAttributes = {
 					9C35CBFE19DBB00700557269 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 85M74MVK78;
+						DevelopmentTeam = YSTN5P64C3;
 						LastSwiftMigration = 0800;
 					};
 					9CF72B101B8F073400238B9A = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = YSTN5P64C3;
 						TestTargetID = 9C35CBFE19DBB00700557269;
 					};
 					B9EFB9621D20FB7D006CDCAA = {
@@ -569,8 +570,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B013A6D1E4C90F500BBFE6F /* DKImagePickerController.bundle in Resources */,
 				B9EFB9981D210A22006CDCAA /* DKCameraResource.bundle in Resources */,
-				B9EFB9991D210A22006CDCAA /* DKImagePickerController.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,7 +761,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -801,7 +802,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -818,9 +819,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 85M74MVK78;
+				DEVELOPMENT_TEAM = YSTN5P64C3;
 				INFOPLIST_FILE = DKImagePickerControllerDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shaozi.production;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -839,9 +840,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 85M74MVK78;
+				DEVELOPMENT_TEAM = YSTN5P64C3;
 				INFOPLIST_FILE = DKImagePickerControllerDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shaozi.production;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -857,6 +858,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = YSTN5P64C3;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -864,7 +866,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = DKImagePickerControllerDemoTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhangao.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -878,10 +880,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = YSTN5P64C3;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = DKImagePickerControllerDemoTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhangao.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -904,7 +907,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = DKImagePickerController/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DKImagePickerController.DKImagePickerController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -932,7 +935,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = DKImagePickerController/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DKImagePickerController.DKImagePickerController;
 				PRODUCT_NAME = "$(TARGET_NAME)";

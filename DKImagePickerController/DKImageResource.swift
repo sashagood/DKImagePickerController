@@ -52,6 +52,10 @@ public class DKImageResource {
 		return stretchImgFromMiddle(imageForResource("empty_album"))
 	}
     
+    class func triangleIcon() -> UIImage {
+        return imageForResource("gallery_triangle_icon")
+    }
+    
 }
 
 public class DKImageLocalizedString {

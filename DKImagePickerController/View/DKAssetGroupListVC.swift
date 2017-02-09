@@ -9,6 +9,7 @@
 import Photos
 
 let DKImageGroupCellIdentifier = "DKImageGroupCellIdentifier"
+let brandBlackColor = UIColor(white: 26.0 / 255.0, alpha: 1.0)
 
 class DKAssetGroupCell: UITableViewCell {
     
@@ -36,13 +37,14 @@ class DKAssetGroupCell: UITableViewCell {
 	
     var groupNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 13)
+        label.font = UIFont.systemFont(ofSize: 13.0, weight: UIFontWeightMedium)
+        label.textColor = brandBlackColor
         return label
     }()
 	
     var totalCountLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 10)
+        label.font = UIFont.systemFont(ofSize: 10.0, weight: UIFontWeightMedium)
         label.textColor = UIColor.gray
         return label
     }()
@@ -61,9 +63,9 @@ class DKAssetGroupCell: UITableViewCell {
     }()
     
     lazy var customSeparator: DKAssetGroupSeparator = {
-        let separator = DKAssetGroupSeparator(frame: CGRect(x: 10, y: self.bounds.height - 1, width: self.bounds.width, height: 0.5))
+        let separator = DKAssetGroupSeparator(frame: CGRect(x: 10, y: self.bounds.height - 1, width: self.bounds.width - 20, height: 0.5))
         
-        separator.backgroundColor = UIColor.lightGray
+        separator.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
         separator.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
         return separator
     }()
@@ -193,7 +195,7 @@ class DKAssetGroupListVC: UITableViewController, DKGroupDataManagerObserver {
         let cell = tableView.dequeueReusableCell(withIdentifier: DKImageGroupCellIdentifier, for: indexPath) as! DKAssetGroupCell
 		
         let assetGroup = getImageManager().groupDataManager.fetchGroupWithGroupId(groups![indexPath.row])
-        cell.groupNameLabel.text = assetGroup.groupName
+        cell.groupNameLabel.text = assetGroup.groupName.uppercased()
 		
 		let tag = indexPath.row + 1
 		cell.tag = tag
