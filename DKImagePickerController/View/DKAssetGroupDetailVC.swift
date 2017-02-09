@@ -140,9 +140,15 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
         self.selectGroupButton.sizeToFit()
         if groupsCount > 1 {
             self.selectGroupButton.setImage(DKImageResource.triangleIcon(), for: .normal)
-            self.selectGroupButton.transform = CGAffineTransform(scaleX: -1.0, y: 1.0);
-            self.selectGroupButton.titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0);
-            self.selectGroupButton.imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0);
+            self.selectGroupButton.sizeToFit()
+            self.selectGroupButton.titleEdgeInsets = UIEdgeInsetsMake(0,
+                                                                      -self.selectGroupButton.imageView!.frame.size.width,
+                                                                      0,
+                                                                      self.selectGroupButton.imageView!.frame.size.width);
+            self.selectGroupButton.imageEdgeInsets = UIEdgeInsetsMake(0,
+                                                                      self.selectGroupButton.titleLabel!.frame.size.width,
+                                                                      0,
+                                                                      -self.selectGroupButton.titleLabel!.frame.size.width);
         }
 		self.selectGroupButton.isEnabled = groupsCount > 1
 		
