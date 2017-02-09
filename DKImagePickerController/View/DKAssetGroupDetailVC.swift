@@ -278,6 +278,7 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if self.isCameraCell(indexPath: indexPath) {
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                self.collectionView.deselectItem(at: IndexPath(item: 0, section: 0), animated: false)
                 self.imagePickerController.presentCamera()
             }
         } else {
