@@ -276,7 +276,7 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         contentView.addSubview(self.cancelButton)
         
         self.flashButton.frame.origin = CGPoint(x: 5, y: 15)
-        contentView.addSubview(self.flashButton)
+        bottomView.addSubview(self.flashButton)
         
         contentView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(DKCamera.handleZoom(_:))))
         contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(DKCamera.handleFocus(_:))))
