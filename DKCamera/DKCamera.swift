@@ -190,7 +190,7 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     // MARK: - Setup
     
-    let bottomView = UIView()
+    open let bottomView = UIView()
     open func setupUI() {
         self.view.backgroundColor = UIColor.black
         self.view.addSubview(self.contentView)
