@@ -378,6 +378,17 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         if let stillImageOutput = self.stillImageOutput, !stillImageOutput.isCapturingStillImage {
             self.captureButton.isEnabled = false
             
+            let blinkView = UIView(frame: view.bounds)
+            blinkView.backgroundColor = UIColor.black
+            blinkView.alpha = 1
+            contentView.insertSubview(blinkView, belowSubview: bottomView)
+            
+            UIView.animate(withDuration: 0.25, animations: {
+                blinkView.alpha = 0.0
+            }, completion: { (finished) in
+                blinkView.removeFromSuperview()
+            })
+            
             DispatchQueue.global().async(execute: {
                 if let connection = stillImageOutput.connection(withMediaType: AVMediaTypeVideo) {
                     
@@ -386,6 +397,7 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                     
                     stillImageOutput.captureStillImageAsynchronously(from: connection, completionHandler: { (imageDataSampleBuffer, error) in
                         if error == nil {
+                            
                             let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDataSampleBuffer)
                             
                             if let didFinishCapturingImage = self.didFinishCapturingImage, let imageData = imageData, let takenImage = UIImage(data: imageData) {
