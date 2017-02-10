@@ -124,6 +124,7 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     }()
     open var cameraSwitchButton: UIButton!
     open var captureButton: UIButton!
+    open var cancelButton: UIButton!
     
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -196,7 +197,7 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         self.contentView.backgroundColor = UIColor.clear
         self.contentView.frame = self.view.bounds
         
-        let bottomViewHeight: CGFloat = 70
+        let bottomViewHeight: CGFloat = 76.5
         bottomView.bounds.size = CGSize(width: contentView.bounds.width, height: bottomViewHeight)
         bottomView.frame.origin = CGPoint(x: 0, y: contentView.bounds.height - bottomViewHeight)
         bottomView.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
@@ -271,7 +272,8 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         cancelButton.frame.origin = CGPoint(x: contentView.bounds.width - cancelButton.bounds.width - 15, y: 25)
         cancelButton.autoresizingMask = [.flexibleBottomMargin, .flexibleLeftMargin]
-        contentView.addSubview(cancelButton)
+        self.cancelButton = cancelButton
+        contentView.addSubview(self.cancelButton)
         
         self.flashButton.frame.origin = CGPoint(x: 5, y: 15)
         contentView.addSubview(self.flashButton)
