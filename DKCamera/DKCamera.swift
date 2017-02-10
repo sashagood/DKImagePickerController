@@ -222,28 +222,7 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         // capture button
         let captureButton: UIButton = {
-            
-            class DKCaptureButton: UIButton {
-                fileprivate override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
-                    self.backgroundColor = UIColor.white
-                    return true
-                }
-                
-                fileprivate override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
-                    self.backgroundColor = UIColor.white
-                    return true
-                }
-                
-                fileprivate override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
-                    self.backgroundColor = nil
-                }
-                
-                fileprivate override func cancelTracking(with event: UIEvent?) {
-                    self.backgroundColor = nil
-                }
-            }
-            
-            let captureButton = DKCaptureButton()
+            let captureButton = UIButton(type: .custom)
             captureButton.addTarget(self, action: #selector(DKCamera.takePicture), for: .touchUpInside)
             captureButton.bounds.size = CGSize(width: bottomViewHeight,
                                                height: bottomViewHeight).applying(CGAffineTransform(scaleX: 0.9, y: 0.9))
