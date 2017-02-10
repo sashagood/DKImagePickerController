@@ -85,6 +85,7 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        self.refreshCameraCellIfNedded()
         self.updateCachedAssets()
     }
 	
@@ -129,6 +130,14 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
         self.selectedGroupId = groupId
 		self.updateTitleView()
 		self.collectionView!.reloadData()
+    }
+    
+    func refreshCameraCellIfNedded() {
+        let indexPath = IndexPath(item: 0, section: 0)
+        if self.isCameraCell(indexPath: indexPath) {
+            let cell = collectionView.cellForItem(at: indexPath) as! DKAssetGroupDetailBaseCell
+            cell.refresh()
+        }
     }
 	
 	func updateTitleView() {

@@ -17,4 +17,7 @@ open class DKAssetGroupDetailBaseCell: UICollectionViewCell, DKAssetGroupCellIte
     open weak var asset: DKAsset!
     open var index: Int = 0
     open var thumbnailImage: UIImage!
+    
+    open func refresh() {    
+    }
 }
