@@ -135,8 +135,9 @@ internal class DKAssetGroupDetailVC: UIViewController, UICollectionViewDelegate,
     func refreshCameraCellIfNedded() {
         let indexPath = IndexPath(item: 0, section: 0)
         if self.isCameraCell(indexPath: indexPath) {
-            let cell = collectionView.cellForItem(at: indexPath) as! DKAssetGroupDetailBaseCell
-            cell.refresh()
+            if let cell = collectionView.cellForItem(at: indexPath) as? DKAssetGroupDetailBaseCell {
+                cell.refresh()
+            }
         }
     }
 	
