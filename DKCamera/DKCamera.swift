@@ -126,6 +126,10 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     open var captureButton: UIButton!
     open var cancelButton: UIButton!
     
+    deinit {
+        stopEverything()
+    }
+    
     override open func viewDidLoad() {
         super.viewDidLoad()
         
@@ -142,18 +146,20 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         if !self.captureSession.isRunning {
             self.captureSession.startRunning()
         }
+    
+        weak var weakSelf = self
         
         if !self.motionManager.isAccelerometerActive {
             self.motionManager.startAccelerometerUpdates(to: OperationQueue.current!, withHandler: { accelerometerData, error in
                 if error == nil {
-                    let currentOrientation = accelerometerData!.acceleration.toDeviceOrientation() ?? self.currentOrientation
-                    if self.originalOrientation == nil {
-                        self.initialOriginalOrientationForOrientation()
-                        self.currentOrientation = self.originalOrientation
+                    let currentOrientation = accelerometerData!.acceleration.toDeviceOrientation() ?? weakSelf?.currentOrientation
+                    if weakSelf?.originalOrientation == nil {
+                        weakSelf?.initialOriginalOrientationForOrientation()
+                        weakSelf?.currentOrientation = weakSelf?.originalOrientation
                     }
-                    if let currentOrientation = currentOrientation , self.currentOrientation != currentOrientation {
-                        self.currentOrientation = currentOrientation
-                        self.updateContentLayoutForCurrentOrientation()
+                    if let currentOrientation = currentOrientation , weakSelf?.currentOrientation != currentOrientation {
+                        weakSelf?.currentOrientation = currentOrientation
+                        weakSelf?.updateContentLayoutForCurrentOrientation()
                     }
                 } else {
                     print("error while update accelerometer: \(error!.localizedDescription)", terminator: "")
@@ -175,6 +181,10 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
+     //   stopEverything()
+    }
+    
+    func stopEverything() { // ???
         self.stopSession()
         self.motionManager.stopAccelerometerUpdates()
     }
@@ -583,6 +593,8 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     open func updateContentLayoutForCurrentOrientation() {
         let newAngle = self.currentOrientation.toAngleRelativeToPortrait() - self.originalOrientation.toAngleRelativeToPortrait()
         
+        weak var weakSelf = self
+        
         if self.allowsRotate {
             var contentViewNewSize: CGSize!
             let width = self.view.bounds.width
@@ -594,15 +606,15 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             }
             
             UIView.animate(withDuration: 0.2, animations: {
-                self.contentView.bounds.size = contentViewNewSize
-                self.contentView.transform = CGAffineTransform(rotationAngle: newAngle)
+                weakSelf?.contentView.bounds.size = contentViewNewSize
+                weakSelf?.contentView.transform = CGAffineTransform(rotationAngle: newAngle)
             }) 
         } else {
             let rotateAffineTransform = CGAffineTransform.identity.rotated(by: newAngle)
             
             UIView.animate(withDuration: 0.2, animations: {
-                self.flashButton.transform = rotateAffineTransform
-                self.cameraSwitchButton.transform = rotateAffineTransform
+                weakSelf?.flashButton.transform = rotateAffineTransform
+                weakSelf?.cameraSwitchButton.transform = rotateAffineTransform
             }) 
         }
     }
