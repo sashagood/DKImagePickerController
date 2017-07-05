@@ -67,7 +67,7 @@ open class DKPopoverViewController: UIViewController {
         override func layoutSubviews() {
             super.layoutSubviews()
             
-            self.arrowImageView.frame = CGRect(x: (self.bounds.width - self.arrowWidth) / 2, y: 0, width: arrowWidth, height: arrowHeight)
+            self.arrowImageView.frame = CGRect(x: self.bounds.width - self.arrowWidth - 40, y: 0, width: arrowWidth, height: arrowHeight)
             self.contentView.frame = CGRect(x: 0, y: self.arrowHeight, width: self.bounds.width, height: self.bounds.height - arrowHeight)
         }
         

@@ -181,7 +181,7 @@ open class DKCamera: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-     //   stopEverything()
+   //     stopEverything()
     }
     
     func stopEverything() { // ???

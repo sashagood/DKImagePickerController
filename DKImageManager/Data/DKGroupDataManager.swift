@@ -9,7 +9,7 @@
 import Photos
 
 @objc
-protocol DKGroupDataManagerObserver {
+public protocol DKGroupDataManagerObserver {
 	
 	@objc optional func groupDidUpdate(_ groupId: String)
 	@objc optional func groupDidRemove(_ groupId: String)

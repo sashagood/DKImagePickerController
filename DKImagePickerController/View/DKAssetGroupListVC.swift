@@ -11,7 +11,7 @@ import Photos
 let DKImageGroupCellIdentifier = "DKImageGroupCellIdentifier"
 let brandBlackColor = UIColor(white: 26.0 / 255.0, alpha: 1.0)
 
-class DKAssetGroupCell: UITableViewCell {
+public class DKAssetGroupCell: UITableViewCell {
     
     class DKAssetGroupSeparator: UIView {
 
@@ -82,11 +82,11 @@ class DKAssetGroupCell: UITableViewCell {
         self.addSubview(self.customSeparator)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         
         let imageViewY = CGFloat(10)
@@ -102,9 +102,9 @@ class DKAssetGroupCell: UITableViewCell {
     
 }
 
-class DKAssetGroupListVC: UITableViewController, DKGroupDataManagerObserver {
+public class DKAssetGroupListVC: UITableViewController, DKGroupDataManagerObserver {
     
-	convenience init(selectedGroupDidChangeBlock: @escaping (_ groupId: String?) -> (), defaultAssetGroup: PHAssetCollectionSubtype?) {
+	public convenience init(selectedGroupDidChangeBlock: @escaping (_ groupId: String?) -> (), defaultAssetGroup: PHAssetCollectionSubtype?) {
 		self.init(style: .plain)
 		
 		self.defaultAssetGroup = defaultAssetGroup
@@ -127,7 +127,7 @@ class DKAssetGroupListVC: UITableViewController, DKGroupDataManagerObserver {
 		return options
 	}()
     
-    override var preferredContentSize: CGSize {
+    override public var preferredContentSize: CGSize {
         get {
             if let groups = self.groups {
                 return CGSize(width: UIViewNoIntrinsicMetric, height: CGFloat(groups.count) * self.tableView.rowHeight)
@@ -140,7 +140,7 @@ class DKAssetGroupListVC: UITableViewController, DKGroupDataManagerObserver {
         }
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.register(DKAssetGroupCell.self, forCellReuseIdentifier: DKImageGroupCellIdentifier)
@@ -152,7 +152,7 @@ class DKAssetGroupListVC: UITableViewController, DKGroupDataManagerObserver {
 		getImageManager().groupDataManager.addObserver(self)
 	}
 	
-	internal func loadGroups() {
+	public func loadGroups() {
 		getImageManager().groupDataManager.fetchGroups { [weak self] groups, error in
 			guard let strongSelf = self else { return }
 			
@@ -187,11 +187,11 @@ class DKAssetGroupListVC: UITableViewController, DKGroupDataManagerObserver {
 	
     // MARK: - UITableViewDelegate, UITableViewDataSource methods
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groups?.count ?? 0
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DKImageGroupCellIdentifier, for: indexPath) as! DKAssetGroupCell
 		
         let assetGroup = getImageManager().groupDataManager.fetchGroupWithGroupId(groups![indexPath.row])
@@ -216,7 +216,7 @@ class DKAssetGroupListVC: UITableViewController, DKGroupDataManagerObserver {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         DKPopoverViewController.dismissPopoverViewController()
 		
 		self.selectedGroup = self.groups![indexPath.row]
@@ -225,12 +225,12 @@ class DKAssetGroupListVC: UITableViewController, DKGroupDataManagerObserver {
 	
 	// MARK: - DKGroupDataManagerObserver methods
 	
-	func groupDidUpdate(_ groupId: String) {
+	public func groupDidUpdate(_ groupId: String) {
 		let indexPath = IndexPath(row: self.groups!.index(of: groupId)!, section: 0)
 		self.tableView.reloadRows(at: [indexPath], with: .none)
 	}
 	
-	func groupDidRemove(_ groupId: String) {
+	public func groupDidRemove(_ groupId: String) {
 		let indexPath = IndexPath(row: self.groups!.index(of: groupId)!, section: 0)
 		self.groups?.remove(at: indexPath.row)
 		self.tableView.deleteRows(at: [indexPath], with: .none)
